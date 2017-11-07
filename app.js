@@ -16,7 +16,7 @@ const pen = new Product('pen', 'pen.jpg');
 const petSweep = new Product('pet-sweep', 'pet-sweep.jpg');
 const scissors = new Product('scissors', 'scissors.jpg');
 const shark = new Product('shark', 'shark.jpg');
-const sweep = new Product('sweep', 'sweep.jpg');
+const sweep = new Product('sweep', 'sweep.png');
 const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
 const unicorn = new Product('unicorn', 'unicorn.jpg');
 const usb = new Product('usb', 'usb.gif');
@@ -24,16 +24,22 @@ const waterCan = new Product('water-can', 'water-can.jpg');
 const wineGlass = new Product('wine-glass', 'wine-glass.jpg');
 
 
-const products = [bag, banana, chair, cthulhu, dragon, tauntaun, dogDuck, petSweep, scissors, shark, sweep, wineGlass, usb, unicorn, waterCan, pen, bag, bathroom, boots, breakfast, bubblegum];
+const products = [bag, banana, chair, cthulhu, dragon, tauntaun, dogDuck, petSweep, scissors, shark, sweep, wineGlass, usb, unicorn, waterCan, pen, bathroom, boots, breakfast, bubblegum];
 console.log(products);
 
-
-for (let i = 0; i < 3; i++); {
+for (let i = 0; i < 3; i++) {
     appendRandomProduct();
 }
 
 const vote = document.getElementById('vote');
 vote.addEventListener('click', clickHandler);
+
+function appendRandomProduct() {
+    const vote = document.getElementById('vote');
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const ele = randomProduct.render();  // returns img element
+    vote.appendChild(ele);
+}
 
 function clickHandler(e) {
     const clickedProduct = e.target; // is the html element that was clicked
@@ -46,7 +52,7 @@ function clickHandler(e) {
         const productsClass = clickedProduct.classList.value;
         if (products[i].type === productsClass) {
             products[i].wasClicked();
-            console.log('number of clicks', products[i].clicked);
+            newFunction_1()('number of clicks', products[i].wasClicked);
         }
     }
     // render a new product
@@ -56,13 +62,10 @@ function clickHandler(e) {
     if (clicks >= 5) {
         endVote();
     }
-}
 
-function appendRandomProduct() {
-    const vote = document.getElementById('vote');
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const randomProductEle = randomProduct.render();  // returns img element
-    vote.appendChild(randomProductEle);
+    function newFunction_1() {
+        return console.log;
+    }
 }
 
 function endVote () {
@@ -71,11 +74,11 @@ function endVote () {
     vote.removeEventListener('click', clickHandler);
 
     console.table(products);
-    drawChart();
+//    drawChart();
 }
-function drawChart () {
-    const canvas = document.getElementById('endVote');
-    const context = canvas.getContext('2d');
-    context.fillStyle = 'rbga()';
-    context.
-}
+//function drawChart () {
+//    const canvas = document.getElementById('endVote');
+//    const context = canvas.getContext('2d');
+//    context.fillStyle = 'rbga()';
+//    context.
+//}
