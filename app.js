@@ -87,7 +87,7 @@ function drawChart () {
     const canvas = document.getElementById('graphVotes');
     const context = canvas.getContext('2d');
 
-    context.fillStyle = 'purple';
+    context.fillStyle = 'rbga(102, 0, 104, 1)';
     context.fillRect(0, 0, 200, 200);
 
     context.font = '24px sans-serif';
@@ -114,8 +114,21 @@ function drawChart () {
 //    chartCtx,
 //    type: 'bar',
 //    data: {
-//        labels: [],
-//        datasets: [],
-//            label: 'Number of votes per item',
-//    }
-//)
+//            labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+//            datasets: [
+//            {   label: 'Number of votes per item',
+//                data: voteData,
+//                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+//            }
+//        ]
+//    },
+//    options, {
+//        title: {
+//            display: true,
+//            text: 'Votes Tallied'
+//            }
+//        },
+//    );
+//}
+//
+//    Chart.prototype.render();
