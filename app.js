@@ -34,39 +34,44 @@ for (let i = 0; i < 3; i++) {
 const vote = document.getElementById('vote');
 vote.addEventListener('click', clickHandler);
 
-function appendRandomProduct() {
-    const vote = document.getElementById('vote');
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const ele = randomProduct.render();  // returns img element
-    vote.appendChild(ele);
-}
-
 function clickHandler(e) {
     const clickedProduct = e.target; // is the html element that was clicked
 
     // will exit the function if something else was clicked
-    if (clickedProduct.id === vote) return;
+    if (clickedProduct.id === 'vote') return;
 
     // looping over products array to find a product instance to update
     for (let i = 0; i < products.length; i++) {
         const productsClass = clickedProduct.classList.value;
         if (products[i].type === productsClass) {
             products[i].wasClicked();
-            newFunction_1()('number of clicks', products[i].wasClicked);
+            console.log('number of clicks', products[i].clicks);
         }
     }
+    // remove element
+    const images = document.querySelectorAll('img');
+    for (let i = 0; i < 3; i++) {
+        images[i].remove();
+    }
+
     // render a new product
-    appendRandomProduct();
+    for (let i = 0; i < 3; i++) {
+        appendRandomProduct();
+    }
 
     clicks++;
-    if (clicks >= 5) {
+    if (clicks >= 10) {
         endVote();
     }
-
-    function newFunction_1() {
-        return console.log;
-    }
 }
+
+function appendRandomProduct() {
+    const vote = document.getElementById('vote');
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const randomProductEle = randomProduct.render();  // returns img element
+    vote.appendChild(randomProductEle);
+}
+
 
 function endVote () {
     // remove click listener

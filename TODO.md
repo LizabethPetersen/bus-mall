@@ -2,4 +2,4 @@
 
 2) Remove all three images upon one click and replace with three new random images
 
-3) Store data about which image is clicked
+3) Store data about which image is clicked (this info is not rendering in the table)

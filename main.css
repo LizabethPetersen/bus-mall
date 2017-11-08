@@ -9,7 +9,6 @@ h1 {
     font-size: 36px;
 }
 
-img.small {
-    width: 100px;
-    height: auto;
+div#vote img {
+    max-height: 200px;
 }

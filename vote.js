@@ -4,7 +4,7 @@
 function Product (name, src) {
     this.name = name;
     this.src = './assets/' + src;
-    this.clicked = 0;
+    this.clicks = 0;
 }
 
 Product.prototype.render = function() {
@@ -16,7 +16,7 @@ Product.prototype.render = function() {
 };
 
 Product.prototype.wasClicked = function() {
-    this.clicked += 1;
+    this.clicks += 1;
 };
 
 console.log(Product);
