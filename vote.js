@@ -4,12 +4,8 @@
 function Product (name, src) {
     this.name = name;
     this.src = './assets/' + src;
-    this.clicked = 0;
+    this.clicks = 0;
 }
-
-Product.prototype.clicked = function() {
-    this.clicked += 1;
-};
 
 Product.prototype.render = function() {
     const ele = document.createElement('img');
@@ -17,6 +13,10 @@ Product.prototype.render = function() {
     ele.classList.add(this.name);
 
     return ele;
+};
+
+Product.prototype.wasClicked = function() {
+    this.clicks += 1;
 };
 
 console.log(Product);
