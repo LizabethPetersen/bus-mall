@@ -43,7 +43,9 @@ function clickHandler(e) {
     // looping over products array to find a product instance to update
     for (let i = 0; i < products.length; i++) {
         const productsClass = clickedProduct.classList.value;
-        if (products[i].type === productsClass) {
+        console.log(products[i].name, productsClass);
+
+        if (products[i].name === productsClass) {
             products[i].wasClicked();
             console.log('number of clicks', products[i].clicks);
         }
