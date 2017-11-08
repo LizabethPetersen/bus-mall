@@ -81,11 +81,41 @@ function endVote () {
     vote.removeEventListener('click', clickHandler);
 
     console.table(products);
-//    drawChart();
+    drawChart();
 }
-//function drawChart () {
-//    const canvas = document.getElementById('endVote');
-//    const context = canvas.getContext('2d');
-//    context.fillStyle = 'rbga()';
-//    context.
-//}
+function drawChart () {
+    const canvas = document.getElementById('graphVotes');
+    const context = canvas.getContext('2d');
+
+    context.fillStyle = 'purple';
+    context.fillRect(0, 0, 200, 200);
+
+    context.font = '24px sans-serif';
+    for (let i = 0; i < 10; i++) {
+        context.fillText('THANK YOU FOR VOTING!', 210, 200);
+
+        const productNames = [];
+        const voteData = [];
+
+        for ( let i = 0; i < products.length; i++ ){
+            productNames.push(products[i].name);
+            voteData.push(products[i].clicks);
+
+            console.log( 'productNames:', productNames );
+            console.log( 'voteData:', voteData );
+        }
+    }
+}
+
+//const chartCanvas = document.getElementById('chart');
+//const chartCtx = chartCanvas.getContext('2d');
+//
+//const chart = new Chart (
+//    chartCtx,
+//    type: 'bar',
+//    data: {
+//        labels: [],
+//        datasets: [],
+//            label: 'Number of votes per item',
+//    }
+//)
