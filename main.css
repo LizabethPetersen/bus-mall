@@ -13,3 +13,7 @@ div#vote img {
     max-height: 200px;
     padding-right: 20px;
 }
+section {
+    height: 400px;
+    width: 600px;
+}
