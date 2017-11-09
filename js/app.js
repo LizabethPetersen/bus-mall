@@ -25,10 +25,11 @@ const wineGlass = new Product('wine-glass', 'wine-glass.jpg');
 
 
 const products = [bag, banana, chair, cthulhu, dragon, tauntaun, dogDuck, petSweep, scissors, shark, sweep, wineGlass, usb, unicorn, waterCan, pen, bathroom, boots, breakfast, bubblegum];
+
 console.log(products);
 
 for (let i = 0; i < 3; i++) {
-    appendRandomProduct();
+    showRandomProduct();
 }
 
 const vote = document.getElementById('vote');
@@ -55,10 +56,9 @@ function clickHandler(e) {
     for (let i = 0; i < 3; i++) {
         images[i].remove();
     }
-
     // render a new product
     for (let i = 0; i < 3; i++) {
-        appendRandomProduct();
+        showRandomProduct();
     }
 
     clicks++;
@@ -67,13 +67,12 @@ function clickHandler(e) {
     }
 }
 
-function appendRandomProduct() {
+function showRandomProduct() {
     const vote = document.getElementById('vote');
     const randomProduct = products[Math.floor(Math.random() * products.length)];
     const randomProductEle = randomProduct.render();  // returns img element
     vote.appendChild(randomProductEle);
 }
-
 
 function endVote () {
     // remove click listener
@@ -83,52 +82,65 @@ function endVote () {
     console.table(products);
     drawChart();
 }
+
 function drawChart () {
-    const canvas = document.getElementById('graphVotes');
+    const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
-    context.fillStyle = 'rbga(102, 0, 104, 1)';
-    context.fillRect(0, 0, 200, 200);
+    context.fillStyle = 'purple';
+    context.fillRect(0,0,200,200);
 
     context.font = '24px sans-serif';
     for (let i = 0; i < 10; i++) {
-        context.fillText('THANK YOU FOR VOTING!', 210, 200);
-
-        const productNames = [];
-        const voteData = [];
-
-        for ( let i = 0; i < products.length; i++ ){
-            productNames.push(products[i].name);
-            voteData.push(products[i].clicks);
-
-            console.log( 'productNames:', productNames );
-            console.log( 'voteData:', voteData );
-        }
+        context.fillText('THANK YOU FOR VOTING!', 210, 200);  // all of this context will be replaced by new Chart
     }
+// chartData.data.datasets[0].data.push(this item will be votes for a particular item)
+//this will be done in a for loop of all products, similar to the clickHandler for loop
+// after the for loop is populated, call new Chart(context, chartData)
 }
 
+//const productNames = [];
+//const voteData = [];
+//
+//for (let i = 0; i < products.length; i++ ) {
+//    productNames.push(products[i].name);
+//    voteData.push(products[i].clicks);
+//
+//    console.log( 'productNames:', productNames );
+//    console.log( 'voteData:', voteData );
+//}
+//
 //const chartCanvas = document.getElementById('chart');
 //const chartCtx = chartCanvas.getContext('2d');
 //
-//const chart = new Chart (
-//    chartCtx,
+//let chartData = {
 //    type: 'bar',
 //    data: {
-//            labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
-//            datasets: [
-//            {   label: 'Number of votes per item',
-//                data: voteData,
-//                backgroundColor: 'rgba(0, 0, 0, 0.7)',
-//            }
-//        ]
+//        labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+//        datasets: [{
+//            label: 'Number of votes per item',
+//            data: [],
+//            backgroundColor: ['rgba(0, 0, 0, 0.7)'],
+//            borderColor: ['rgba(205, 225, 237, 1)'],
+//            borderWidth: 2
+//        }]
 //    },
-//    options, {
-//        title: {
+//    options: {
+//        legend: {
 //            display: true,
-//            text: 'Votes Tallied'
+//            text: 'Bus Mall Voting Data',
+//            labels: {
+//                fontColor: 'rgb(255, 255, 255)'
 //            }
 //        },
-//    );
-//}
 //
-//    Chart.prototype.render();
+//        scales: {
+//            yAxes: [{
+//                ticks: {
+//                    beginAtZero: true
+//                }
+//            }]
+//        }
+//    }
+//} );
+////Chart.prototype.render = function();

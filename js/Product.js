@@ -1,11 +1,19 @@
 'use strict';
 
 
-function Product (name, src) {
+function Product (name, src) {//eslint-disable-line
     this.name = name;
     this.src = './assets/' + src;
     this.clicks = 0;
 }
+
+Product.prototype.wasDisplayed = function(){
+    this.displayed += 1;
+};
+
+Product.prototype.wasClicked = function() {
+    this.clicks += 1;
+};
 
 Product.prototype.render = function() {
     const ele = document.createElement('img');
@@ -15,8 +23,5 @@ Product.prototype.render = function() {
     return ele;
 };
 
-Product.prototype.wasClicked = function() {
-    this.clicks += 1;
-};
 
 console.log(Product);
