@@ -133,7 +133,7 @@ const chartData = {
             {
                 label: 'Number of votes per item',
                 data: [],
-                backgroundColor: ['rgba(255, 120, 0, 0.8'],
+                backgroundColor: 'rgb(255, 120, 0',
             }]
     },
     options: {
