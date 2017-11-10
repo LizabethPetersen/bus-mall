@@ -125,9 +125,6 @@ function drawChart () {
 
 }
 
-
-
-
 const chartData = {
     type: 'bar',
     data: {
@@ -136,9 +133,7 @@ const chartData = {
             {
                 label: 'Number of votes per item',
                 data: [],
-                backgroundColor: ['rgba(0, 0, 0, 0.7)'],
-                borderColor: ['rgba(205, 225, 237, 1)'],
-                borderWidth: 2
+                backgroundColor: ['rgba(255, 120, 0, 0.8'],
             }]
     },
     options: {
