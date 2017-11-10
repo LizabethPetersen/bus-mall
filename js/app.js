@@ -87,10 +87,11 @@ function endVote () {
     vote.removeEventListener('click', clickHandler);
 
     console.table(products);
+    endCard();
     drawChart();
 }
 
-function drawChart () {
+function endCard () {
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
 
@@ -104,50 +105,57 @@ function drawChart () {
 // chartData.data.datasets[0].data.push(this item will be votes for a particular item)
 //this will be done in a for loop of all products, similar to the clickHandler for loop
 // after the for loop is populated, call new Chart(context, chartData)
+
 }
 
-const productNames = [];
-const voteData = [];
+function drawChart () {
+    const productNames = [];
+    const voteData = [];
 
-for (let i = 0; i < products.length; i++ ) {
-    productNames.push(products[i].name);
-    voteData.push(products[i].clicks);
+    for (let i = 0; i < products.length; i++ ) {
+        chartData.data.labels.push(products[i].name);
+        chartData.data.datasets[0].data.push(products[i].clicks);
+    }
+    //    console.log( 'productNames:', productNames );
+    //    console.log( 'voteData:', voteData );
+    console.log( 'chartData', chartData);
+    const chartCanvas = document.getElementById('chart');
+    const ctx = chartCanvas.getContext('2d');
+    new Chart(ctx, chartData);
 
-    console.log( 'productNames:', productNames );
-    console.log( 'voteData:', voteData );
 }
 
-//const chartCanvas = document.getElementById('chart');
-//const chartCtx = chartCanvas.getContext('2d');
-//
-//let chartData = {
-//    type: 'bar',
-//    data: {
-//        labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
-//        datasets, [ 
-//            {
-//            label: 'Number of votes per item',
-//            data: [],
-//            backgroundColor: ['rgba(0, 0, 0, 0.7)'],
-//            borderColor: ['rgba(205, 225, 237, 1)'],
-//            borderWidth: 2
-//        }]
-//},
-//    options: {
-//        legend: {
-//            display: true,
-//            text: 'Bus Mall Voting Data',
-//            labels: {
-//                fontColor: 'rgb(255, 255, 255)'
-//            }
-//        },
-//
-//        scales: {
-//            yAxes: [{
-//                ticks: {
-//                    beginAtZero: true
-//                }
-//            }]
-//        }   
-//    );  
-//}
+
+
+
+const chartData = {
+    type: 'bar',
+    data: {
+        labels: [], //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+        datasets: [
+            {
+                label: 'Number of votes per item',
+                data: [],
+                backgroundColor: ['rgba(0, 0, 0, 0.7)'],
+                borderColor: ['rgba(205, 225, 237, 1)'],
+                borderWidth: 2
+            }]
+    },
+    options: {
+        legend: {
+            display: true,
+            text: 'Bus Mall Voting Data',
+            labels: {
+                fontColor: 'rgb(255, 255, 255)'
+            }
+        },
+
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+};
