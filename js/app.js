@@ -28,9 +28,9 @@ const products = [bag, banana, chair, cthulhu, dragon, tauntaun, dogDuck, petSwe
 
 console.log(products);
 
-for (let i = 0; i < 3; i++) {
-    showRandomProduct();
-}
+
+showRandomProducts();
+
 
 const vote = document.getElementById('vote');
 vote.addEventListener('click', clickHandler);
@@ -57,9 +57,8 @@ function clickHandler(e) {
         images[i].remove();
     }
     // render a new product
-    for (let i = 0; i < 3; i++) {
-        showRandomProduct();
-    }
+    showRandomProducts();
+
 
     clicks++;
     if (clicks >= 10) {
@@ -67,11 +66,19 @@ function clickHandler(e) {
     }
 }
 
-function showRandomProduct() {
+function showRandomProducts() {
     const vote = document.getElementById('vote');
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const randomProductEle = randomProduct.render();  // returns img element
-    vote.appendChild(randomProductEle);
+    const tempArray = [];
+
+    while (tempArray.length < 3) {
+        const randomProduct = products[Math.floor(Math.random() * products.length)];
+
+        if (!tempArray.includes(randomProduct)) {
+            tempArray.push(randomProduct);
+            const randomProductEle = randomProduct.render();  // returns img element
+            vote.appendChild(randomProductEle);
+        }
+    }
 }
 
 function endVote () {
@@ -99,17 +106,17 @@ function drawChart () {
 // after the for loop is populated, call new Chart(context, chartData)
 }
 
-//const productNames = [];
-//const voteData = [];
-//
-//for (let i = 0; i < products.length; i++ ) {
-//    productNames.push(products[i].name);
-//    voteData.push(products[i].clicks);
-//
-//    console.log( 'productNames:', productNames );
-//    console.log( 'voteData:', voteData );
-//}
-//
+const productNames = [];
+const voteData = [];
+
+for (let i = 0; i < products.length; i++ ) {
+    productNames.push(products[i].name);
+    voteData.push(products[i].clicks);
+
+    console.log( 'productNames:', productNames );
+    console.log( 'voteData:', voteData );
+}
+
 //const chartCanvas = document.getElementById('chart');
 //const chartCtx = chartCanvas.getContext('2d');
 //
@@ -117,14 +124,15 @@ function drawChart () {
 //    type: 'bar',
 //    data: {
 //        labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
-//        datasets: [{
+//        datasets, [ 
+//            {
 //            label: 'Number of votes per item',
 //            data: [],
 //            backgroundColor: ['rgba(0, 0, 0, 0.7)'],
 //            borderColor: ['rgba(205, 225, 237, 1)'],
 //            borderWidth: 2
 //        }]
-//    },
+//},
 //    options: {
 //        legend: {
 //            display: true,
@@ -140,7 +148,6 @@ function drawChart () {
 //                    beginAtZero: true
 //                }
 //            }]
-//        }
-//    }
-//} );
-////Chart.prototype.render = function();
+//        }   
+//    );  
+//}
