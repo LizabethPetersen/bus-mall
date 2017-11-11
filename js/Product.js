@@ -1,14 +1,14 @@
 'use strict';
 
 
-function Product (name, src, clicks) {//eslint-disable-line
+function Product(name, src, clicks) { //eslint-disable-line
     this.name = name;
     this.src = src;
     this.clicks = clicks || 0; // votes
     this.tempArray = 0;
 }
 
-Product.prototype.wasDisplayed = function(){
+Product.prototype.wasDisplayed = function() {
     this.tempArray += 1;
 };
 
@@ -19,7 +19,8 @@ Product.prototype.wasClicked = function() {
 Product.prototype.render = function() {
     const ele = document.createElement('img');
     ele.src = this.src;
-    ele.classList.add(this.id);
+    ele.classList.add(this.name);
+
     return ele;
 };
 

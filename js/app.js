@@ -8,7 +8,6 @@ if (localStorage.products) {
 
     // if we have products in localStorage
     // get them, instantiate them, add them into our products array
-
     // productsArray is an array of object literals, NOT Product (the constructor)
 
     const productsArray = JSON.parse(localStorage.products);
@@ -108,25 +107,26 @@ function endVote() {
     const vote = document.getElementById('vote');
     vote.removeEventListener('click', clickHandler);
 
-    console.table(products);
-    endCard();
+    //    console.table(products);
+    //    endCard();
     drawChart();
+
     localStorage.setItem('products', JSON.stringify(products));
 
 }
 
-function endCard() {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    ctx.fillStyle = 'purple';
-    ctx.fillRect(0,0,200,200);
-
-    ctx.font = '24px sans-serif';
-    for (let i = 0; i < 10; i++) {
-        ctx.fillText('THANK YOU FOR VOTING!', 210, 200);  // all //of this context will be replaced by new Chart
-    }
-}
+//function endCard() {
+//    const canvas = document.getElementById('canvas');
+//    const ctx = canvas.getContext('2d');
+//
+//    ctx.fillStyle = 'purple';
+//    ctx.fillRect(0,0,200,200);
+//
+//    ctx.font = '24px sans-serif';
+//    for (let i = 0; i < 10; i++) {
+//        ctx.fillText('THANK YOU FOR VOTING!', 210, 200);  // all //of this context will be replaced by new Chart
+//    }
+//}
 // chartData.data.datasets[0].data.push(this item will be votes for a particular item)
 //this will be done in a for loop of all products, similar to the clickHandler for loop
 // after the for loop is populated, call new Chart(context, chartData)
@@ -145,57 +145,59 @@ function drawChart() {
     context.fillRect(0,0,200,200);
 
     context.font = '24px serif';
-    //    for (let i = 0; 1 < 25; i++) {
-    //        context.fillText('THANKS FOR PARTICIPATING!', 210, 210);
-    //    }
+    for (let i = 0; i < 10; i++) {
+        context.fillText('end of vote',200,200);
+    }
 
-    // TODO add a chart that shows # of votes per product
+    // TODO adds chart that shows # of votes per product -- adds the persistence
     const productNames = [];
     const voteData = [];
 
     for (let i = 0; i < products.length; i++) {
-        chartData.data.labels.push(products[i].name);
-        chartData.data.datasets[0].data.push(products[i].clicks);
+        productNames.push(products[i].name);
+        voteData.push(products[i].clicks);
+
+    //        console.log('productNames:', productNames);
+    //        console.log('voteData:', voteData);
+
+        //    Chart.defaults.global.defaultFontColor = '#888';
+        //    new Chart(chartContext, chartData);
     }
-    console.log('productNames:', productNames);
-    console.log('voteData:', voteData);
 
     const chartCanvas = document.getElementById('chart');
     const chartContext = chartCanvas.getContext('2d');
 
-    Chart.defaults.global.defaultFontColor = '#888';
 
-    new Chart(chartContext, chartData);
+    const chartData = new Chart (
+        chartContext,
+        { // first level children: type of chart, data, options
+            type: 'bar',
+            data: {
+                labels: productNames, //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+                datasets: [
+                    {
+                        label: 'Number of votes per item',
+                        data: voteData,
+                        backgroundColor: 'rgb(255, 120, 0',
+                    }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Bus Mall Tabulated Voting Data',
+                    //            labels: {
+                    //                fontColor: 'rgb(255, 255, 255)'
+                },
 
-}
-
-
-const chartData = { // first level children: type of chart, data, options
-    type: 'bar',
-    data: {
-        labels: [], //'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', //'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
-        datasets: [
-            {
-                label: 'Number of votes per item',
-                data: [],
-                backgroundColor: 'rgb(255, 120, 0',
-            }
-        ]
-    },
-    options: {
-        title: {
-            display: true,
-            text: 'Bus Mall Voting Data',
-            //            labels: {
-            //                fontColor: 'rgb(255, 255, 255)'
-        },
-
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            }]
+            }
         }
-    }
-};
+    );
+}
