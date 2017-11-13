@@ -144,7 +144,7 @@ function drawChart() {
     context.fillStyle = 'rgba(200,100,200,1)';
     context.fillRect(0,0,200,200);
 
-    context.font = '24px serif';
+    context.font = '30px serif';
     for (let i = 0; i < 10; i++) {
         context.fillText('end of vote',200,200);
     }
@@ -157,10 +157,10 @@ function drawChart() {
         productNames.push(products[i].name);
         voteData.push(products[i].clicks);
 
-    //        console.log('productNames:', productNames);
-    //        console.log('voteData:', voteData);
+        //        console.log('productNames:', productNames);
+        //        console.log('voteData:', voteData);
 
-        //    Chart.defaults.global.defaultFontColor = '#888';
+        //   Chart.defaults.global.defaultFontColor = '#888';
         //    new Chart(chartContext, chartData);
     }
 
@@ -178,7 +178,7 @@ function drawChart() {
                     {
                         label: 'Number of votes per item',
                         data: voteData,
-                        backgroundColor: 'rgb(255, 120, 0',
+                        backgroundColor: '#ff4000',
                     }
                 ]
             },
