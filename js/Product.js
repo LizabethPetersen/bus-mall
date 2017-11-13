@@ -3,7 +3,7 @@
 
 function Product(name, src, clicks) { //eslint-disable-line
     this.name = name;
-    this.src = '.js/assets/' + src;
+    this.src = './js/assets/' + src;
     this.clicks = clicks || 0; // votes
     this.tempArray = 0;
 }

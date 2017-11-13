@@ -44,7 +44,7 @@ if (localStorage.products) {
     const wineGlass = new Product('wine-glass', 'wine-glass.jpg');
 
 
-    products = [bag, banana, chair, cthulhu, dragon, tauntaun, dogDuck, petSweep, scissors, shark, sweep, wineGlass, usb, unicorn, waterCan, pen, bathroom, boots, breakfast, bubblegum];
+    products = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, usb, unicorn, waterCan, wineGlass];
 }
 
 console.log(products);
