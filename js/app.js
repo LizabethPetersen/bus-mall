@@ -22,26 +22,26 @@ if (localStorage.products) {
 
 } else {
 
-    const bag = new Product('bag', 'bag.jpg');
-    const banana = new Product('banana', 'banana.jpg');
-    const bathroom = new Product('bathroom', 'bathroom.jpg');
-    const boots = new Product('boots', 'boots.jpg');
-    const breakfast = new Product('breakfast', 'breakfast.jpg');
-    const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
-    const chair = new Product('chair', 'chair.jpg');
-    const cthulhu = new Product('cthulhu', 'cthulhu.jpg');
-    const dogDuck = new Product('dog-duck', 'dog-duck.jpg');
-    const dragon = new Product('dragon', 'dragon.jpg');
-    const pen = new Product('pen', 'pen.jpg');
-    const petSweep = new Product('pet-sweep', 'pet-sweep.jpg');
-    const scissors = new Product('scissors', 'scissors.jpg');
-    const shark = new Product('shark', 'shark.jpg');
-    const sweep = new Product('sweep', 'sweep.png');
-    const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
-    const unicorn = new Product('unicorn', 'unicorn.jpg');
-    const usb = new Product('usb', 'usb.gif');
-    const waterCan = new Product('water-can', 'water-can.jpg');
-    const wineGlass = new Product('wine-glass', 'wine-glass.jpg');
+    const bag = new Product('bag', 'assets/bag.jpg');
+    const banana = new Product('banana', 'assets/banana.jpg');
+    const bathroom = new Product('bathroom', 'assets/bathroom.jpg');
+    const boots = new Product('boots', 'assets/boots.jpg');
+    const breakfast = new Product('breakfast', 'assets/breakfast.jpg');
+    const bubblegum = new Product('bubblegum', 'assets/bubblegum.jpg');
+    const chair = new Product('chair', 'assets/chair.jpg');
+    const cthulhu = new Product('cthulhu', 'assets/cthulhu.jpg');
+    const dogDuck = new Product('dog-duck', 'assets/dog-duck.jpg');
+    const dragon = new Product('dragon', 'assets/dragon.jpg');
+    const pen = new Product('pen', 'assets/pen.jpg');
+    const petSweep = new Product('pet-sweep', 'assets/pet-sweep.jpg');
+    const scissors = new Product('scissors', 'assets/scissors.jpg');
+    const shark = new Product('shark', 'assets/shark.jpg');
+    const sweep = new Product('sweep', 'assets/sweep.png');
+    const tauntaun = new Product('tauntaun', 'assets/tauntaun.jpg');
+    const unicorn = new Product('unicorn', 'assets/unicorn.jpg');
+    const usb = new Product('usb', 'assets/usb.gif');
+    const waterCan = new Product('water-can', 'assets/water-can.jpg');
+    const wineGlass = new Product('wine-glass', 'assets/wine-glass.jpg');
 
 
     products = [bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogDuck, dragon, pen, petSweep, scissors, shark, sweep, tauntaun, usb, unicorn, waterCan, wineGlass];
