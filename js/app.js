@@ -82,7 +82,7 @@ function clickHandler(e) {
 
 
     clicks++;
-    if (clicks >= 10) {
+    if (clicks >= 25) {
         endVote();
     }
 }
@@ -127,6 +127,8 @@ function endVote() {
 //        ctx.fillText('THANK YOU FOR VOTING!', 210, 200);  // all //of this context will be replaced by new Chart
 //    }
 //}
+
+
 // chartData.data.datasets[0].data.push(this item will be votes for a particular item)
 //this will be done in a for loop of all products, similar to the clickHandler for loop
 // after the for loop is populated, call new Chart(context, chartData)
