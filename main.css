@@ -1,7 +1,7 @@
 body {
     background: #26004d;
     color: #b4f10b;   
-    background-image: url("assets/trimet-bus-w-glow.png");
+    background-image: url("trimet-bus-w-glow.png");
     background-repeat: no-repeat;
     background-position: center top;
     background-attachment: fixed;
@@ -31,10 +31,12 @@ body {
 #vote  {
     background-color: #b4f10b;
     height: 240px;
+    text-align: center;
 }
 
 #vote img {
     max-height: 220px;
+    margin: 5px;
     border: double 3px;
     border-color: #26004d;
     border-top-right-radius: 30px 30px;
